@@ -7,24 +7,25 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.androidapp.databinding.ActivityFirstScreenBinding
+
 
 class FirstScreen : AppCompatActivity() {
-    // Declare layout object variables
-    lateinit var btnProceed: Button
+   private lateinit var binding: ActivityFirstScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_first_screen)
+        binding = ActivityFirstScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // Bind the object variable to the view in the layout (view binding)
-        btnProceed = findViewById<Button>(R.id.btnProceed)
+
         // Creates an action listener
-        btnProceed.setOnClickListener {
+            binding.btnProceed.setOnClickListener {
             // Declare an intent object
             val intent = Intent(this, Login::class.java)
             startActivity(intent)

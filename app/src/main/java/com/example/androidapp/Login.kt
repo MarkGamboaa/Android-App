@@ -7,24 +7,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.androidapp.databinding.ActivityLoginBinding
+import com.example.androidapp.databinding.ActivitySignUpBinding
 
 class Login : AppCompatActivity() {
-    // Declare layout object variables
-    lateinit var btnSignUp: Button
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        btnSignUp = findViewById<Button>(R.id.btnSignUp)
-        // Creates an action listener
-        btnSignUp.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
             // Declare an intent object
             val intent = Intent(this, Sign_Up::class.java)
             startActivity(intent)

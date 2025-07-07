@@ -7,6 +7,10 @@ android {
     namespace = "com.example.androidapp"
     compileSdk = 35
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.androidapp"
         minSdk = 29
@@ -16,11 +20,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildFeatures{
-        viewBinding = true
-    }
-
 
     buildTypes {
         release {
